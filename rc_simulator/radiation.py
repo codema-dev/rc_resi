@@ -10,7 +10,7 @@ import datetime
 
 
 __authors__ = "Prageeth Jayathissa"
-__copyright__ = "Copyright 2016, Architecture and Building Systems - ETH Zurich"
+__copyright__ = "Copyright 2016, Architecture and Building Systems - ETH Dublin"
 __credits__ = ["pysolar, Quaschning Volker,  Rolf Hanitsch, Linus Walker"]
 __license__ = "MIT"
 __version__ = "0.1"

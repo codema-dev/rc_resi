@@ -2,7 +2,7 @@
 Example of an Annual Simulation
 """
 __author__ = "Prageeth Jayathissa"
-__copyright__ = "Copyright 2016, Architecture and Building Systems - ETH Zurich"
+__copyright__ = "Copyright 2016, Architecture and Building Systems - ETH Dublin"
 __credits__ = []
 __license__ = "MIT"
 __version__ = "0.1"
@@ -43,8 +43,8 @@ COP = []
 
 
 # Initialise the Location with a weather file
-Zurich = Location(epwfile_path=os.path.join(
-    mainPath, 'auxiliary', 'Zurich-Kloten_2013.epw'))
+Dublin = Location(epwfile_path=os.path.join(
+    mainPath, 'auxiliary', 'IRL_Dublin.039690_IWEC.epw'))
 
 # Initialise an instance of the Zone. Empty spaces take on the default
 # parameters. See ZonePhysics.py to see the default values
@@ -103,21 +103,21 @@ for hour in range(8760):
     internal_gains = occupancy * gain_per_person + \
         appliance_gains * Office.floor_area
 
-    # Extract the outdoor temperature in Zurich for that hour
-    t_out = Zurich.weather_data['drybulb_C'][hour]
+    # Extract the outdoor temperature in Dublin for that hour
+    t_out = Dublin.weather_data['drybulb_C'][hour]
 
-    Altitude, Azimuth = Zurich.calc_sun_position(
+    Altitude, Azimuth = Dublin.calc_sun_position(
         latitude_deg=47.480, longitude_deg=8.536, year=2015, hoy=hour)
 
     SouthWindow.calc_solar_gains(sun_altitude=Altitude, sun_azimuth=Azimuth,
-                                 normal_direct_radiation=Zurich.weather_data[
+                                 normal_direct_radiation=Dublin.weather_data[
                                      'dirnorrad_Whm2'][hour],
-                                 horizontal_diffuse_radiation=Zurich.weather_data['difhorrad_Whm2'][hour])
+                                 horizontal_diffuse_radiation=Dublin.weather_data['difhorrad_Whm2'][hour])
 
     SouthWindow.calc_illuminance(sun_altitude=Altitude, sun_azimuth=Azimuth,
-                                 normal_direct_illuminance=Zurich.weather_data[
+                                 normal_direct_illuminance=Dublin.weather_data[
                                      'dirnorillum_lux'][hour],
-                                 horizontal_diffuse_illuminance=Zurich.weather_data['difhorillum_lux'][hour])
+                                 horizontal_diffuse_illuminance=Dublin.weather_data['difhorillum_lux'][hour])
 
     Office.solve_energy(internal_gains=internal_gains,
                         solar_gains=SouthWindow.solar_gains,

@@ -9,7 +9,7 @@ J. A. Fonseca  adaptation for CEA tool     18.05.16
 import pandas as pd
 
 __author__ = "Clayton Miller"
-__copyright__ = "Copyright 2014, Architecture and Building Systems - ETH Zurich"
+__copyright__ = "Copyright 2014, Architecture and Building Systems - ETH Dublin"
 __credits__ = ["Clayton Miller", "Jimeno A. Fonseca"]
 __license__ = "MIT"
 __version__ = "0.1"

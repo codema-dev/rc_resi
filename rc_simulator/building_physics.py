@@ -79,7 +79,7 @@ import supply_system
 import emission_system
 
 __authors__ = "Prageeth Jayathissa"
-__copyright__ = "Copyright 2016, Architecture and Building Systems - ETH Zurich"
+__copyright__ = "Copyright 2016, Architecture and Building Systems - ETH Dublin"
 __credits__ = ["Gabriel Happle, Justin Zarb, Michael Fehr"]
 __license__ = "MIT"
 __version__ = "0.1"
@@ -107,7 +107,7 @@ class Zone(object):
                  ach_infl=0.5,
                  ventilation_efficiency=0.6,
                  thermal_capacitance_per_floor_area=165000,
-                 t_set_heating=20.0,
+                 t_set_heating=21.0,
                  t_set_cooling=26.0,
                  max_cooling_energy_per_floor_area=-float("inf"),
                  max_heating_energy_per_floor_area=float("inf"),

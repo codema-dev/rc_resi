@@ -3,7 +3,7 @@ Main file to calculate the Zone loads
 EN-13970
 """
 __author__ = "Prageeth Jayathissa"
-__copyright__ = "Copyright 2016, Architecture and Building Systems - ETH Zurich"
+__copyright__ = "Copyright 2016, Architecture and Building Systems - ETH Dublin"
 __credits__ = [""]
 __license__ = "MIT"
 __version__ = "0.1"
@@ -51,7 +51,7 @@ Office = Zone()
 
 # Read Weather Data
 weatherData = epwreader.epwreader(os.path.join(
-    mainPath, 'auxiliary', 'Zurich-Kloten_2013.epw'))
+    mainPath, 'auxiliary', 'IRL_Dublin.039690_IWEC.epw'))
 
 
 # Read Sunposition and Extract Azimuth and Alitutude Angles

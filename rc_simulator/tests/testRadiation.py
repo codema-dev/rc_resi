@@ -16,15 +16,15 @@ class TestRadiation(unittest.TestCase):
 
     def test_sunPosition(self):
 
-        Zurich = Location(epwfile_path=os.path.join(
-            mainPath, 'auxiliary', 'Zurich-Kloten_2013.epw'))
+        Dublin = Location(epwfile_path=os.path.join(
+            mainPath, 'auxiliary', 'IRL_Dublin.039690_IWEC.epw'))
 
         Azimuth = []
         Altitude = []
         Sunnyhoy = []
 
         for hoy in range(8760):
-            angles = Zurich.calc_sun_position(
+            angles = Dublin.calc_sun_position(
                 latitude_deg=47.480, longitude_deg=8.536, year=2015, hoy=hoy)
 
             Altitude.append(angles[0])
@@ -63,9 +63,9 @@ class TestRadiation(unittest.TestCase):
         hoy = 3993
         # 9:00 am 16 June 2015
 
-        Zurich = Location(epwfile_path=os.path.join(
-            mainPath, 'auxiliary', 'Zurich-Kloten_2013.epw'))
-        Altitude, Azimuth = Zurich.calc_sun_position(
+        Dublin = Location(epwfile_path=os.path.join(
+            mainPath, 'auxiliary', 'IRL_Dublin.039690_IWEC.epw'))
+        Altitude, Azimuth = Dublin.calc_sun_position(
             latitude_deg=47.480, longitude_deg=8.536, year=2015, hoy=hoy)
 
         SouthWindow = Window(azimuth_tilt=0, alititude_tilt=90, glass_solar_transmittance=0.7,
@@ -82,14 +82,14 @@ class TestRadiation(unittest.TestCase):
         for selected_window in [SouthWindow, EastWindow, WestWindow, NorthWindow, RoofAtrium]:
 
             selected_window.calc_solar_gains(sun_altitude=Altitude, sun_azimuth=Azimuth,
-                                             normal_direct_radiation=Zurich.weather_data[
+                                             normal_direct_radiation=Dublin.weather_data[
                                                  'dirnorrad_Whm2'][hoy],
-                                             horizontal_diffuse_radiation=Zurich.weather_data['difhorrad_Whm2'][hoy])
+                                             horizontal_diffuse_radiation=Dublin.weather_data['difhorrad_Whm2'][hoy])
 
             selected_window.calc_illuminance(sun_altitude=Altitude, sun_azimuth=Azimuth,
-                                             normal_direct_illuminance=Zurich.weather_data[
+                                             normal_direct_illuminance=Dublin.weather_data[
                                                  'dirnorillum_lux'][hoy],
-                                             horizontal_diffuse_illuminance=Zurich.weather_data['difhorillum_lux'][hoy])
+                                             horizontal_diffuse_illuminance=Dublin.weather_data['difhorillum_lux'][hoy])
 
         self.assertEqual(round(SouthWindow.incident_solar, 2), 315.85)
         self.assertEqual(round(EastWindow.incident_solar, 2), 570.06)

@@ -2,7 +2,7 @@
 Example of a radiation calculation
 """
 __author__ = "Prageeth Jayathissa"
-__copyright__ = "Copyright 2016, Architecture and Building Systems - ETH Zurich"
+__copyright__ = "Copyright 2016, Architecture and Building Systems - ETH Dublin"
 __credits__ = []
 __license__ = "MIT"
 __version__ = "0.1"
@@ -24,15 +24,15 @@ from radiation import Window
 
 
 # Initialise the Location with a weather file
-Zurich = Location(epwfile_path=os.path.join(
-    mainPath, 'auxiliary', 'Zurich-Kloten_2013.epw'))
+Dublin = Location(epwfile_path=os.path.join(
+    mainPath, 'auxiliary', 'IRL_Dublin.039690_IWEC.epw'))
 
 # Set the hour of the year for determination of the solar angles
 # 9:00 am 16 June
 hoy = 3993
 
 # Determine the solar azimuth and altitude angle
-Altitude, Azimuth = Zurich.calc_sun_position(
+Altitude, Azimuth = Dublin.calc_sun_position(
     latitude_deg=47.480, longitude_deg=8.536, year=2015, hoy=hoy)
 
 # Define Windows
@@ -50,13 +50,13 @@ RoofAtrium = Window(azimuth_tilt=0, alititude_tilt=0, glass_solar_transmittance=
 # Loop through all windows
 for selected_window in [SouthWindow, EastWindow, WestWindow, NorthWindow, RoofAtrium]:
     selected_window.calc_solar_gains(sun_altitude=Altitude, sun_azimuth=Azimuth,
-                                     normal_direct_radiation=Zurich.weather_data[
+                                     normal_direct_radiation=Dublin.weather_data[
                                          'dirnorrad_Whm2'][hoy],
-                                     horizontal_diffuse_radiation=Zurich.weather_data['difhorrad_Whm2'][hoy])
+                                     horizontal_diffuse_radiation=Dublin.weather_data['difhorrad_Whm2'][hoy])
     selected_window.calc_illuminance(sun_altitude=Altitude, sun_azimuth=Azimuth,
-                                     normal_direct_illuminance=Zurich.weather_data[
+                                     normal_direct_illuminance=Dublin.weather_data[
                                          'dirnorillum_lux'][hoy],
-                                     horizontal_diffuse_illuminance=Zurich.weather_data['difhorillum_lux'][hoy])
+                                     horizontal_diffuse_illuminance=Dublin.weather_data['difhorillum_lux'][hoy])
 
 print(SouthWindow.incident_solar)
 print(EastWindow.incident_solar)

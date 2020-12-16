@@ -14,7 +14,7 @@ TODO: Need to double check supply temperatures, waiting on reply from the CEA te
 """
 
 __author__ = "Prageeth Jayathissa, Michael Fehr"
-__copyright__ = "Copyright 2016, Architecture and Building Systems - ETH Zurich"
+__copyright__ = "Copyright 2016, Architecture and Building Systems - ETH Dublin"
 __credits__ = ["CEA Toolbox"]
 __license__ = "MIT"
 __version__ = "0.1"

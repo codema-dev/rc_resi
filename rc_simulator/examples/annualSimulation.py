@@ -57,17 +57,17 @@ Office = Zone(window_area=4.0,
               lighting_control=300.0,
               lighting_utilisation_factor=0.45,
               lighting_maintenance_factor=0.9,
-              u_walls=0.2,
+              u_walls=0.79,
               u_windows=1.1,
               ach_vent=1.5,
               ach_infl=0.5,
               ventilation_efficiency=0.6,
               thermal_capacitance_per_floor_area=165000,
-              t_set_heating=20.0,
+              t_set_heating=21.0,
               t_set_cooling=26.0,
               max_cooling_energy_per_floor_area=-np.inf,
               max_heating_energy_per_floor_area=np.inf,
-              heating_supply_system=supply_system.OilBoilerMed,
+              heating_supply_system=supply_system.ElectricHeating,
               cooling_supply_system=supply_system.HeatPumpAir,
               heating_emission_system=emission_system.NewRadiators,
               cooling_emission_system=emission_system.AirConditioning,)
@@ -107,7 +107,7 @@ for hour in range(8760):
     t_out = Dublin.weather_data['drybulb_C'][hour]
 
     Altitude, Azimuth = Dublin.calc_sun_position(
-        latitude_deg=47.480, longitude_deg=8.536, year=2015, hoy=hour)
+        latitude_deg=53.3498, longitude_deg=6.2603, year=1997, hoy=hour)
 
     SouthWindow.calc_solar_gains(sun_altitude=Altitude, sun_azimuth=Azimuth,
                                  normal_direct_radiation=Dublin.weather_data[
